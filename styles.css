@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+:root{
+    --borderColor: rgba(255,255,255,0.06);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+body{
+    min-height: 100vh;
+    background-color: rgb(20,20,20);
+    position: relative;
+}
+
+body::before{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: radial-gradient(
+        600px circle at 50% 100%,
+        rgba(0, 191, 255, 0.07),
+        transparent 100%
+    );
+    /* z-index: -2; */
+    pointer-events: none;
+}
+
+ /* HEADER STYLES  */
+
+header{
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1, p{
+    font-family: 'Roboto', sans-serif;
+    color: rgba(255,255,255,0.5);
+    font-size: 2rem;
+}
+
+header > p{
+    margin-top: 0.5rem;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+span{
+    color: rgba(11, 194, 255, 0.753);
+}
+
+
+
+span:nth-child(2){
+    color: rgba(255, 255, 0, 0.7);
+}
+
+/* FORM STYLES */
+
+form{
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+form{
+    display: flex;
+    position: relative;
+}
+
+.form__input{
+    height: 3rem;
+    width:15rem;
+    border: none;
+    padding: 0 1rem;
+    background-color: rgb(20,20,20);
+    color: rgba(255,255,255,0.2);
+
+    border: 1px solid var(--borderColor);
+    border-right: none;
+    transition: color 500ms;
+}
+
+.form__input:focus{
+    color: rgba(255,255,255,0.8);
+    outline: none;
+}
+
+/* FORM BUTTON STYLE */
+
+.form__btn{
+   height: 3rem;
+   width: 3rem;
+   font-size: 1.5rem;
+   border: none;
+   cursor: pointer;
+   background-color: rgb(20,20,20);
+
+   border: 1px solid var(--borderColor);
+   border-left: none;
+
+   transition: background 500ms ease;
+}
+
+.fa-plus-square{
+    pointer-events: none;
+    transition: transform 500ms ease;
+}
+
+.form__btn:hover > .fa-plus-square{
+    transform: rotate(180deg) scale(0.8);
+}
+
+.form__btn:hover{
+    background-color: rgba(255,255,255,0.6);
+}
+
+/* TODO ITEMS STYLES */
+
+.todo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo__ul{
+    list-style: none;
+}
+
+.todo__ul__item{
+    display: flex;
+    margin: 2rem;
+    margin-top: 0;
+    /* background-color: rgb(20,20,20); */
+    /* border: 1px solid var(--borderColor); */
+    transition: opacity 500ms, transform 500ms;
+}
+
+.todo__ul__item__li{
+    font-family: 'Roboto', sans-serif;
+    width: 15rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: var(--borderColor);
+    position: relative;
+    color: rgba(255,255,255,0.4);
+
+    border-radius: 10px;
+    /* border: 1px solid var(--borderColor); */
+
+    transition: background 500ms;
+}
+
+.todo__ul__item__li::before, .todo__ul__item__li::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.todo__ul__item__li::before{
+    background-color: rgb(20,20,20);
+    z-index: 2;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    margin: 1px;
+}
+
+.todo__ul__item__li::after{
+    width: 100%;
+    height: 100%;
+
+    background: radial-gradient(
+        200px circle at 0% 0%,
+        rgba(255,255,255,0.25),
+        transparent 50%
+    );
+    z-index: -1;
+}
+
+
+
+/* .todo__ul__item__li > *{
+    position: relative;
+    z-index: -2;
+} */
+
+
+/* ESTILIZANDO LOS BOTONES ADENTRO DEL TODO NUEVO */
+
+.todo__ul__item > button{
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rebeccapurple;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid var(--borderColor);
+    margin-left: 1rem;
+    background-color:rgb(20,20,20);
+
+    transition: background 500ms, color 500ms;
+}
+
+.todo__ul__item > .checkBtn{
+    color: rgba(0, 128, 0, 0.7);
+}
+
+.todo__ul__item > .deleteBtn{
+    color: rgba(255, 0, 0, 0.7);
+}
+
+.todo__ul__item > .checkBtn:hover{
+    background-color: green;
+    color: rgb(20,20,20);
+}
+
+.todo__ul__item > .deleteBtn:hover{
+    background-color: red;
+    color: rgb(20,20,20);
+}
+
+/* MODIFICO EL ACCIONAR DE LOS BOTONES */
+
+.fa-check, .fa-trash{
+    pointer-events: none;
+    transition: transform 250ms ease;
+}
+
+/* ACCIONAR DE LOS BOTONES */
+/* BOTON CON COMPLETADO */
+
+.completed__item{
+    background-color: rgba(0, 128, 0, 0.6);
+    background: linear-gradient(90deg, rgb(red, 0%), rgb(green, 100%));
+}
+
+/* CLASE DE LA ACCION DE BORRAR */
+
+.deleted__item{
+    opacity: 0;
+    transform: translateX(2rem);
+}
+
+/* ANIMACION DE ERROR CUANDO NO SE INGRESA NADA EN EL INPUT */
+
+.errorAnimation{
+    animation-name: errorAnimation;
+    animation-duration: 500ms;
+}
+
+@keyframes errorAnimation {
+    0%{
+        background-color: rgb(20,20,20);
+    }
+    
+    50%{
+        background-color: red;
+    }
+
+    100%{
+        background-color: rgb(20,20,20);
+    }
+}
