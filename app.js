@@ -13,6 +13,7 @@ todoEl.addEventListener("click", deleteCheck);
 
 function createTodoItem(e) {
     e.preventDefault();
+    console.log(todoEl.childNodes[1]);
     if (inputEl.value !== "") {
         // CREO EL DIV QUE SE VA A AGREGAR AL UL
         const newDiv = document.createElement("div");
@@ -21,13 +22,9 @@ function createTodoItem(e) {
         // CREO EL LI QUE VA ADENTRO DEL DIV
         const newLi = document.createElement("div");
         newLi.classList.add("todo__ul__item__li");
-        
-        // CREO EL TEXTO QUE VA A IR ADENTRO
-        const LiText = document.createElement("li");
-        LiText.classList.add("li__text")
-        LiText.innerHTML = inputEl.value;
-        // newLi.appendChild(LiText);
-        newDiv.appendChild(LiText)
+
+        // MODIFICO EL CONTENIDO DEL BEFORE CON LA SIGUIENTE LINEA
+        newLi.setAttribute('data-before', `${inputEl.value}`)
         newDiv.appendChild(newLi);
         
         // CREO LOS BOTONES QUE VAN ADENTRO
@@ -39,7 +36,6 @@ function createTodoItem(e) {
          `;
         newDiv.appendChild(checkBtn);
 
-
         // DELETE BUTTON
         deleteBtn.classList.add("deleteBtn");
         deleteBtn.innerHTML = `
@@ -47,8 +43,9 @@ function createTodoItem(e) {
         `;
         newDiv.appendChild(deleteBtn);
 
+        // APENDEO TODO EL NUEVO DIV 
+
         todoEl.appendChild(newDiv)
-        console.log(newDiv)
         inputEl.value = "";
     } else {
         console.log("No hay nada para agregar")

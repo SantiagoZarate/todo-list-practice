@@ -173,11 +173,17 @@ form{
 }
 
 .todo__ul__item__li::before{
+    content: attr(data-before);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 1rem;
+    inset: 1px;
     background-color: rgb(20,20,20);
+    /* width: calc(100% - 2px); */
+    /* height: calc(100% - 2px); */
+    /* margin: 1px; */
     z-index: 2;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
-    margin: 1px;
 }
 
 .todo__ul__item__li::after{
@@ -185,20 +191,12 @@ form{
     height: 100%;
 
     background: radial-gradient(
-        200px circle at 0% 0%,
-        rgba(255,255,255,0.25),
-        transparent 50%
+        200px circle at 0% 100%,
+        rgba(255,255,255,0.35),
+        transparent 60%
     );
     z-index: -1;
 }
-
-
-
-/* .todo__ul__item__li > *{
-    position: relative;
-    z-index: -2;
-} */
-
 
 /* ESTILIZANDO LOS BOTONES ADENTRO DEL TODO NUEVO */
 
